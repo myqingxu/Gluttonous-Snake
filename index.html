@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .content{
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .content>.map{
+      position: relative;
+      border: 2px solid #f1f1;
+    }
+    .content>.map>.food{
+      position: absolute;
+    }
+    .content>.map>.snake{
+      position: absolute;
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+
+  </div>
+  <script src="./Map.js"></script>
+  <script src="./Food.js"></script>
+  <script src="./Snake.js"></script>
+  <script>
+    void function() {
+      const gameMap = new Map(500, 500, '#000')
+      const gameFood = new Food(10, 10, '#fff')
+      const gameSnake = new Snake({
+        length: 3,
+        speek: 10,
+        size: 10,
+        bodyColor: '#fff',
+        headColor: 'red'
+      })
+      gameMap.create()
+      gameSnake.create('map')
+      gameFood.create('map', 0, 10)
+      gameFood.autoCreate(500, 500)
+    }()
+  </script>
+</body>
+</html>
