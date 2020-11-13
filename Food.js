@@ -8,7 +8,7 @@ Food.prototype.create = function(mapId, x, y) {
   const div = document.createElement('div')
   div.style.width = this.width + 'px'
   div.style.height = this.height + 'px'
-  div.style.background = this.color
+  // div.style.backgroundColor = this.color
   div.classList.add('food')
   div.style.left = x + 'px'
   div.style.bottom = y + 'px'
@@ -30,6 +30,8 @@ Food.prototype.autoCreate = function(width, height) {
   foodElement.style.display = 'none'
   foodElement.style.left = w + 'px'
   foodElement.style.bottom = h + 'px'
+  foodElement.dataset.x = w
+  foodElement.dataset.y = h
   foodElement.style.display = 'block'
 }
 
