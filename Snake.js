@@ -1,6 +1,6 @@
 function Snake(data) {
   this.length = data.length
-  this.speek = data.speek
+  this.speed = data.speed
   this.size = data.size
   this.bodyColor = data.bodyColor
   this.headColor = data.headColor
@@ -54,7 +54,7 @@ Snake.prototype.move = function (callback) {
       clearInterval(this.t)
       this.t = setInterval(() => {
         this.autoMove(newVal, callback)
-      }, this.speek)
+      }, this.speed)
     },
   })
 }
@@ -82,10 +82,10 @@ Snake.prototype.changeDirection = function (status) {
   this.prevStatus = status
 }
 
-Snake.prototype.eatFood = function (classname) {
+Snake.prototype.eatFood = function (className) {
   const foodXY = {
-    x: Number(document.getElementsByClassName(classname)[0].dataset.x),
-    y: Number(document.getElementsByClassName(classname)[0].dataset.y),
+    x: Number(document.getElementsByClassName(className)[0].dataset.x),
+    y: Number(document.getElementsByClassName(className)[0].dataset.y),
   }
   const headXY = {
     x: this.snakeData[this.snakeData.length - 1].x * 10,
@@ -163,11 +163,11 @@ Snake.prototype.autoMove = function (newVal, callback) {
 
 Snake.prototype.isDead = function() {
   const head = this.snakeData[this.snakeData.length - 1]
-  const bodys = [].concat(this.snakeData)
-  bodys.pop()
-  console.log(bodys);
+  const bodyItems = [].concat(this.snakeData)
+  bodyItems.pop()
+  console.log(bodyItems);
   if (head.x > 49 || head.x < 0 || head.y > 49 || head.y < 0) return true
   console.log(head);
-  console.log(bodys);
-  return bodys.some(item => {return item.x === head.x && item.y === head.y})
+  console.log(bodyItems);
+  return bodyItems.some(item => {return item.x === head.x && item.y === head.y})
 }
